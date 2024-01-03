@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
-    databaseURL: "https://realtime-database-df319-default-rtdb.europe-west1.firebasedatabase.app/"
+    databaseURL: "https://playground-a1cce-default-rtdb.europe-west1.firebasedatabase.app/"
 }
 
 const app = initializeApp(appSettings)
@@ -35,7 +35,7 @@ onValue(shoppingListInDB, function(snapshot) {
             appendItemToShoppingListEl(currentItem)
         }    
     } else {
-        shoppingListEl.innerHTML = "No items here... yet"
+        shoppingListEl.innerHTML = `<p style="text-align:center; width: 100%; font-size: 20px;">No items here... yet</p>`
     }
 })
 
@@ -57,7 +57,12 @@ function appendItemToShoppingListEl(item) {
     
     newEl.addEventListener("click", function() {
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-        
+        // if (newEl.classList.contains("active")) {
+        //     remove(exactLocationOfItemInDB)
+        // } else {
+        //     newEl.classList.toggle("active");
+        //     newEl.textContent = "Remove?"
+        // }
         remove(exactLocationOfItemInDB)
     })
     
