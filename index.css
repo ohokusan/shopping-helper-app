@@ -51,10 +51,10 @@ button {
     font-family: 'Rubik', sans-serif;
 }
 
-button:hover {
+/* button:hover {
     background-color: #750b22;
     cursor: pointer;
-}
+} */
 
 ul {
     list-style-type: none;
